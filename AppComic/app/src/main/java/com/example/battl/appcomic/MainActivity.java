@@ -1,5 +1,6 @@
 package com.example.battl.appcomic;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -8,7 +9,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -60,8 +60,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void cargarReferencias(){
-        recyclerHeroes.addItemDecoration(new MarginDecorator(MainActivity.this));
-        recyclerHeroes.setHasFixedSize(true);
         adapterHeroe = new AdapterHeroe(createList());
         recyclerHeroes.setAdapter(adapterHeroe);
         recyclerHeroes.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -106,14 +104,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_marvel) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_dc) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_starwars) {
 
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_vs) {
+            Intent intent = new Intent(MainActivity.this, VsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

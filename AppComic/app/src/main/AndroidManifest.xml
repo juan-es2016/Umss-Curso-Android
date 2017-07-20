@@ -23,5 +23,6 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".RegistroActivity"></activity>
+        <activity android:name=".VsActivity"></activity>
     </application>
 </manifest>
