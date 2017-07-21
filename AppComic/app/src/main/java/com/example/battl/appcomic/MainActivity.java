@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.battl.appcomic.Adapters.ViewPagerAdapter;
 import com.example.battl.appcomic.models.Heroe;
 
 import java.util.ArrayList;
@@ -27,9 +30,11 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.recycler_heroes)
-    RecyclerView recyclerHeroes;
-    AdapterHeroe adapterHeroe;
+    private TabLayout tabLayout;
+    private int[] tabIcons = {R.drawable.ic_menu_send, R.drawable.ic_menu_camera};
+    PersonajeFragment personajeFragment;
+    PersonajesFragment personajesFragment;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +61,15 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         cargarReferencias();
+        tab();
     }
 
     public void cargarReferencias(){
-        adapterHeroe = new AdapterHeroe(createList());
-        recyclerHeroes.setAdapter(adapterHeroe);
-        recyclerHeroes.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
-        recyclerHeroes.getAdapter().notifyDataSetChanged();
+       personajeFragment = new PersonajeFragment();
+        personajesFragment = new PersonajesFragment();
     }
 
     @Override
@@ -147,5 +153,23 @@ public class MainActivity extends AppCompatActivity
         heroeList.add(superman);
         heroeList.add(joker);
         return heroeList;
+    }
+
+    public void tab(){
+        setupViewPager();
+        tabLayout.setupWithViewPager(viewPager);
+        //setupTabIcons();
+    }
+
+    public void setupViewPager(){
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(personajeFragment, "Personaje");
+        adapter.addFragment(personajesFragment, "Lista");
+        viewPager.setAdapter(adapter);
+    }
+
+    public void setupTabIcons(){
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
     }
 }
