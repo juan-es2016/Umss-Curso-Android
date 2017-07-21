@@ -1,4 +1,4 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.battl.appcomic.R;
+import com.example.battl.appcomic.activities.VsActivity;
 import com.example.battl.appcomic.models.Heroe;
 
 import java.util.List;
@@ -40,7 +42,7 @@ public class AdapterHeroe extends RecyclerView.Adapter<ItemHeroes> {
             public void onClick(View view) {
                 Toast toast = Toast.makeText(context, heroe.getNombre(), Toast.LENGTH_SHORT);
                 toast.show();
-                ((VsActivity)context).setHeroeFragment2(heroe);
+                ((VsActivity)context).setHeroeFragmentDos(heroe);
             }
         });
     }
@@ -49,4 +51,5 @@ public class AdapterHeroe extends RecyclerView.Adapter<ItemHeroes> {
     public int getItemCount() {
         return heroeList.size();
     }
+
 }

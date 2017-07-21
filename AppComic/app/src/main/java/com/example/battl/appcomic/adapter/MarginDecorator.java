@@ -1,9 +1,11 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.adapter;
 
 import android.content.Context;
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import com.example.battl.appcomic.R;
 
 /**
  * Created by Brian on 09/06/2016.

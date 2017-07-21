@@ -1,4 +1,4 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.fragmets;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.battl.appcomic.R;
+import com.example.battl.appcomic.Utils.HeroeUtil;
+import com.example.battl.appcomic.activities.VsActivity;
+import com.example.battl.appcomic.adapter.AdapterHeroe;
 import com.example.battl.appcomic.models.Heroe;
 
 import java.util.ArrayList;
@@ -33,37 +38,15 @@ public class PersonajesFragment extends Fragment {
         View view = layoutInflater.inflate(R.layout.fragment_recycler_view, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        adapterHeroe = new AdapterHeroe(createList());
+        adapterHeroe = new AdapterHeroe(new HeroeUtil().createList(getActivity()));
         recyclerHeroes.setAdapter(adapterHeroe);
         recyclerHeroes.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerHeroes.getAdapter().notifyDataSetChanged();
-
         return view;
     }
 
-    public List<Heroe> createList() {
-        Heroe ironMan = new Heroe("IronMan", "Armadura Avanzada", getResources().getDrawable(R.drawable.iron_man));
-        Heroe batman = new Heroe("batman", "Entrenamiento Avanzado", getResources().getDrawable(R.drawable.batman));
-        Heroe superman = new Heroe("superman", "Super Fuerza", getResources().getDrawable(R.drawable.superman));
-        Heroe capitan = new Heroe("capitan", "Mejora genetica", getResources().getDrawable(R.drawable.capitan_america));
-        Heroe joker = new Heroe("joker", "ninguno", getResources().getDrawable(R.drawable.joker));
-
-        List<Heroe> heroeList = new ArrayList<>();
-        heroeList.add(ironMan);
-        heroeList.add(batman);
-        heroeList.add(superman);
-        heroeList.add(capitan);
-        heroeList.add(joker);
-        heroeList.add(ironMan);
-        heroeList.add(batman);
-        heroeList.add(superman);
-        heroeList.add(capitan);
-        heroeList.add(joker);
-        heroeList.add(ironMan);
-        heroeList.add(batman);
-        heroeList.add(superman);
-        heroeList.add(joker);
-        return heroeList;
+    public void clickHeroe(){
+       // ((VsActivity)getActivity()).setHeroeFragmentDos();
     }
 
     @Override

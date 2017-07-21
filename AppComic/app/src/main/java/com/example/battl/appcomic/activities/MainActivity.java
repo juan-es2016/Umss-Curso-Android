@@ -1,4 +1,4 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.battl.appcomic.Adapters.ViewPagerAdapter;
+import com.example.battl.appcomic.R;
+import com.example.battl.appcomic.adapter.AdapterHeroe;
+import com.example.battl.appcomic.adapter.ViewPagerAdapter;
+import com.example.battl.appcomic.fragmets.PersonajeFragment;
+import com.example.battl.appcomic.fragmets.PersonajesFragment;
 import com.example.battl.appcomic.models.Heroe;
 
 import java.util.ArrayList;
@@ -31,10 +35,13 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TabLayout tabLayout;
-    private int[] tabIcons = {R.drawable.ic_menu_send, R.drawable.ic_menu_camera};
     PersonajeFragment personajeFragment;
     PersonajesFragment personajesFragment;
-    ViewPager viewPager;
+    private int[] tabIcons = {
+            R.drawable.ic_menu_gallery,
+            R.drawable.ic_menu_camera,
+            R.drawable.ic_menu_send
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +68,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
         cargarReferencias();
         tab();
     }
 
     public void cargarReferencias(){
-       personajeFragment = new PersonajeFragment();
+        personajeFragment = new PersonajeFragment();
         personajesFragment = new PersonajesFragment();
     }
 
@@ -130,46 +135,25 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public List<Heroe> createList() {
-        Heroe ironMan = new Heroe("IronMan", "Armadura Avanzada", getResources().getDrawable(R.drawable.iron_man));
-        Heroe batman = new Heroe("batman", "Entrenamiento Avanzado", getResources().getDrawable(R.drawable.batman));
-        Heroe superman = new Heroe("superman", "Super Fuerza", getResources().getDrawable(R.drawable.superman));
-        Heroe capitan = new Heroe("capitan", "Mejora genetica", getResources().getDrawable(R.drawable.capitan_america));
-        Heroe joker = new Heroe("joker", "ninguno", getResources().getDrawable(R.drawable.joker));
-
-        List<Heroe> heroeList = new ArrayList<>();
-        heroeList.add(ironMan);
-        heroeList.add(batman);
-        heroeList.add(superman);
-        heroeList.add(capitan);
-        heroeList.add(joker);
-        heroeList.add(ironMan);
-        heroeList.add(batman);
-        heroeList.add(superman);
-        heroeList.add(capitan);
-        heroeList.add(joker);
-        heroeList.add(ironMan);
-        heroeList.add(batman);
-        heroeList.add(superman);
-        heroeList.add(joker);
-        return heroeList;
-    }
-
     public void tab(){
-        setupViewPager();
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-        //setupTabIcons();
+        setupTabIcons();
     }
 
-    public void setupViewPager(){
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(personajeFragment, "Personaje");
-        adapter.addFragment(personajesFragment, "Lista");
-        viewPager.setAdapter(adapter);
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapterFragment = new ViewPagerAdapter(getSupportFragmentManager());
+        adapterFragment.addFragment(personajeFragment, "");
+        adapterFragment.addFragment(personajesFragment, "");
+        viewPager.setAdapter(adapterFragment);
     }
 
-    public void setupTabIcons(){
+    private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
     }
+
+
 }

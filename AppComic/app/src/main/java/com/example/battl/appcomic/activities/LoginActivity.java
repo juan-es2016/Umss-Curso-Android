@@ -1,4 +1,4 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.battl.appcomic.R;
 
 /**
  * Created by Battl on 18/07/2017.
