@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 
+import com.example.battl.appcomic.models.Heroe;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -19,15 +21,17 @@ public class VsActivity extends AppCompatActivity {
     FrameLayout contenedorFragmentUno;
     @BindView(R.id.contenedor_fragment_dos)
     FrameLayout contenedorFragment2;
+    PersonajesFragment personajesFragment;
+    PersonajeFragment personajeFragment;
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_vs);
         ButterKnife.bind(this);
-        PersonajesFragment personajesFragment = new PersonajesFragment();
+         personajesFragment = new PersonajesFragment();
         loadFragment(personajesFragment);
-        PersonajeFragment personajeFragment = new PersonajeFragment();
+         personajeFragment = new PersonajeFragment();
         loadFragment2(personajeFragment);
     }
 
@@ -43,6 +47,10 @@ public class VsActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.contenedor_fragment_dos, fragment);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fragmentTransaction.commit();
+    }
+
+    public void setHeroeFragment2(Heroe heroe){
+        personajeFragment.cargarHeroes(heroe);
     }
 
 }

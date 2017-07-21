@@ -40,6 +40,7 @@ public class AdapterHeroe extends RecyclerView.Adapter<ItemHeroes> {
             public void onClick(View view) {
                 Toast toast = Toast.makeText(context, heroe.getNombre(), Toast.LENGTH_SHORT);
                 toast.show();
+                ((VsActivity)context).setHeroeFragment2(heroe);
             }
         });
     }
