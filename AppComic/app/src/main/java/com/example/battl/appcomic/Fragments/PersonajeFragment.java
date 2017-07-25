@@ -1,4 +1,4 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.battl.appcomic.models.Heroe;
+import com.example.battl.appcomic.R;
+import com.example.battl.appcomic.Models.Heroe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

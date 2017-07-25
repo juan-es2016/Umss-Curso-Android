@@ -1,10 +1,12 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.battl.appcomic.R;
 
 /**
  * Created by Battl on 19/07/2017.

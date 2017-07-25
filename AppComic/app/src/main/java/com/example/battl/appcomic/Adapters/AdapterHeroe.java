@@ -1,4 +1,4 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.battl.appcomic.models.Heroe;
+import com.example.battl.appcomic.Models.Heroe;
+import com.example.battl.appcomic.R;
+import com.example.battl.appcomic.Activities.VsActivity;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.battl.appcomic.models.Heroe;
+import com.example.battl.appcomic.Adapters.AdapterHeroe;
+import com.example.battl.appcomic.R;
+import com.example.battl.appcomic.Models.Heroe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +39,6 @@ public class PersonajesFragment extends Fragment {
         recyclerHeroes.setAdapter(adapterHeroe);
         recyclerHeroes.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerHeroes.getAdapter().notifyDataSetChanged();
-
         return view;
     }
 

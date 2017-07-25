@@ -4,30 +4,30 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_marvel"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/capitan_icon_black"
             android:title="Marvel" />
         <item
-            android:id="@+id/nav_dc"
-            android:icon="@android:drawable/stat_notify_chat"
-            android:title="Dc" />
+            android:id="@+id/nav_personajes"
+            android:icon="@drawable/wolverine_icon_black"
+            android:title="Personajes" />
         <item
-            android:id="@+id/nav_starwars"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="StarWars" />
+            android:id="@+id/nav_comics"
+            android:icon="@drawable/pantera_icon"
+            android:title="Comics" />
         <item
             android:id="@+id/nav_vs"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/icon_black_menu"
             android:title="VS" />
     </group>
 
     <item android:title="Cuenta">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:id="@+id/nav_perfil"
+                android:icon="@drawable/iron_man_icon_black"
                 android:title="Perfil" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_salir"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Salir" />
         </menu>

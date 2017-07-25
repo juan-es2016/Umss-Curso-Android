@@ -1,7 +1,6 @@
-package com.example.battl.appcomic.models;
+package com.example.battl.appcomic.Models;
 
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 
 /**
  * Created by Battl on 19/07/2017.

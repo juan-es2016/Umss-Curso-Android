@@ -1,30 +1,28 @@
-package com.example.battl.appcomic;
+package com.example.battl.appcomic.Activities;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.battl.appcomic.Adapters.ViewPagerAdapter;
-import com.example.battl.appcomic.models.Heroe;
+import com.example.battl.appcomic.Fragments.FondoFragment;
+import com.example.battl.appcomic.Fragments.HeroesFragmet;
+import com.example.battl.appcomic.Models.Heroe;
+import com.example.battl.appcomic.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
@@ -32,8 +30,9 @@ public class MainActivity extends AppCompatActivity
 
     private TabLayout tabLayout;
     private int[] tabIcons = {R.drawable.ic_menu_send, R.drawable.ic_menu_camera};
-    PersonajeFragment personajeFragment;
-    PersonajesFragment personajesFragment;
+    HeroesFragmet heroesFragmet;
+    FondoFragment fondoFragment;
+
     ViewPager viewPager;
 
     @Override
@@ -43,15 +42,6 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,8 +58,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void cargarReferencias(){
-       personajeFragment = new PersonajeFragment();
-        personajesFragment = new PersonajesFragment();
+        heroesFragmet = new HeroesFragmet();
+        fondoFragment = new FondoFragment();
     }
 
     @Override
@@ -112,17 +102,19 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_marvel) {
             // Handle the camera action
-        } else if (id == R.id.nav_dc) {
+        } else if (id == R.id.nav_personajes) {
 
-        } else if (id == R.id.nav_starwars) {
+        } else if (id == R.id.nav_comics) {
 
         } else if (id == R.id.nav_vs) {
             Intent intent = new Intent(MainActivity.this, VsActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_perfil) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_salir) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -159,17 +151,19 @@ public class MainActivity extends AppCompatActivity
         setupViewPager();
         tabLayout.setupWithViewPager(viewPager);
         //setupTabIcons();
+        tabLayout.setTabTextColors(ColorStateList.valueOf(getResources().getColor(R.color.blanco)));
     }
 
     public void setupViewPager(){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(personajeFragment, "Personaje");
-        adapter.addFragment(personajesFragment, "Lista");
+        adapter.addFragment(heroesFragmet, "Menu");
+        adapter.addFragment(fondoFragment, "FONDO");
         viewPager.setAdapter(adapter);
     }
 
     public void setupTabIcons(){
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+
     }
 }

@@ -1,0 +1,27 @@
+package com.example.battl.appcomic.Retrofit.Models;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by Battl on 25/07/2017.
+ */
+public class Event {
+    public int id;
+    public String title;
+    public String description;
+    public String resourceURL;
+    public List<Url> urls;
+    public Date modified;
+    public Date start;
+    public Date end;
+    public ImageInfo thumbnail;
+    public ItemList comics;
+    public ItemList stories;
+    public ItemList series;
+    public CharacterList characters;
+    public CreatorList creators;
+    public Item next;
+    public Item previous;
+
+}
