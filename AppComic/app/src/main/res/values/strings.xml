@@ -16,4 +16,8 @@
     <string name="nombre">Nombre de Usuario</string>
     <string name="contraseña">Contraseña</string>
     <string name="telefono">Telefono</string>
+    <string name="alert_tittle_item">Alert Personalizado</string>
+    <string name="alert_dialog_message">Mensaje</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
 </resources>

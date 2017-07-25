@@ -1,6 +1,7 @@
 package com.example.battl.appcomic.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity{
     EditText edtEmail;
     EditText edtContraseña;
 
+
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
@@ -33,7 +35,6 @@ public class LoginActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         btnAcceder = (Button) findViewById(R.id.btn_acceder);
         btnRegistro = (Button) findViewById(R.id.btn_registrarse);
-
 
         btnAcceder.setOnClickListener(new View.OnClickListener() {
             @Override
